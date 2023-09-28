@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contract Analysis</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #333;
+            margin-top: 30px;
+        }
+
+        .container {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 600px;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        label {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        label:hover {
+            background-color: #2980b9;
+        }
+
+        #file-label {
+            font-weight: bold;
+        }
+
+        #output {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-top: 20px;
+            border-radius: 5px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Contract Analysis</h1>
+        <form action="/uploadfile/" enctype="multipart/form-data" method="post">
+            <label for="file">
+                <span id="file-label">Choose a PDF File</span>
+                <input type="file" name="file" id="file" accept=".pdf">
+            </label>
+            <input type="submit" value="Upload">
+        </form>
+        <div id="output">
+            <h2>Analysis Output</h2>
+            <textarea rows="10" cols="40" id="output-text" readonly></textarea>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript to display the output text in the text area
+        const outputText = document.getElementById("output-text");
+        const outputDiv = document.getElementById("output");
+
+        // Function to update the output text
+        function updateOutputText(responseText) {
+            outputText.value = responseText;
+            outputDiv.style.display = "block";
+        }
+    </script>
+</body>
+</html>
